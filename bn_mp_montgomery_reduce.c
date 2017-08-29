@@ -30,6 +30,7 @@ mp_montgomery_reduce (mp_int * x, mp_int * n, mp_digit rho)
    */
   digs = (n->used * 2) + 1;
   if ((digs < MP_WARRAY) &&
+      (x->used <= MP_WARRAY) &&
       (n->used <
       (1 << ((CHAR_BIT * sizeof(mp_word)) - (2 * DIGIT_BIT))))) {
     return fast_mp_montgomery_reduce (x, n, rho);
